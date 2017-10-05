@@ -1,0 +1,139 @@
+\documentclass{tccv}
+\usepackage[english]{babel}
+
+\usepackage{xpatch}
+\xpatchcmd{\personal}
+{\colorbox[HTML]{F5DD9D}}  % original colour
+{\colorbox[HTML]{cac4f2}}  % put your preferred colour RGB here
+{}{}
+
+% Resume at top instead of CV, change whenever
+\usepackage{etoolbox}
+\patchcmd{\part}{Curriculum vitae}{Resume}{}{}
+
+% Reset the section color
+\usepackage{xcolor}
+\usepackage{sectsty}
+\sectionfont{\color{blue}}  % sets colour of sections
+
+% Because we changed the section color, it reverts back to the default section definition. We copy the new section definition from the class file of tccv to redefine it so there is a line under each section heading
+\makeatletter
+\let\old@section\section
+\renewcommand\section[2][]{%
+    \old@section[#1]{\ucwords{#2}}%
+    \newdimen\raising%
+    \raising=\dimexpr-0.7\baselineskip\relax%
+    \vskip\raising\hrule height 0.4pt\vskip-\raising}
+\makeatother
+
+% Here we can change the color of the line under each section heading
+\usepackage{xpatch}
+\xpatchcmd\section{\hrule height 0.4pt}{{\color{black}\hrule height
+0.4pt}}{}{}
+
+\begin{document}
+
+\part{Siddartha Devic}
+
+\section{Objective}
+"Learning and working to approach machine learning and artificial intelligence from a fundamentally theoretical perspective."
+\section{Research Experience}
+
+\begin{eventlist}
+
+\item{August 2017 -- Present}
+     {Machine Learning, UTD [1]}
+     {Research Intern}
+
+Working on theoretical foundations of machine learning techniques, particularly neural networks and the capabilities of stochastic gradient descent.
+
+\item{June 2017 -- August 2017}
+     {Future Immersive Virtual Env. Lab, UTD [2]}
+     {Research Intern}
+
+Developed a novel method for physical object selection and representation in virtual reality. Worked as part of the Clark Research program for pre-freshmen. Poster can be found  \href{https://utdallas.app.box.com/v/physVR}{here.}
+
+\item{June 2016 -- December 2016}
+     {UT Austin Astronomy Department}
+     {Research Intern}
+
+Looked for patterns in data from the McDonald observatory concerning extrasolar planets. Also worked to slowly convert FORTRAN data analyzer into Python.
+
+\end{eventlist}
+
+\section{Education}
+
+\begin{yearlist}
+
+\item[Undergraduate]{2017 -- Present}
+     {Computer Science and Mathematics}
+     {The University of Texas at Dallas}
+
+\item{2013 -- 2017}
+     {International Baccalaureate Diploma}
+     {Westwood High School, Austin, TX}
+
+\end{yearlist}
+\personal
+    [https://github.com/sid-devic]
+    {11113 Oak Knoll Drive,\newline 78759 - Austin,TX}
+    {512-970-0666}
+    {sid.devic@utd.edu}
+\section{Projects}
+
+\begin{yearlist}
+
+\item{2017}
+     {MyUTD (\href{http://ntdisp.entidi.com/}{github})}
+     {An Android application to track public transportation in the form of comet cabs around the UTD campus. Utilizes the QT cross-platform development framework, c++, QML, and JavaScript}
+
+\item{2017}
+     {physVR (\href{https://github.com/sid-devic/physVR
+}{github})}
+     {Novel method to scan physical objects and represent them in virtual reality in Unity3D and C\# using Unity's scripting system. }
+     
+\end{yearlist}
+
+\section{Volunteer Work}
+\begin{eventlist}
+
+\item{2012-2017}
+    {}
+    {}
+    {Cleaned and served homeless at the Caritas Soup Kitchen in Austin, TX. 3-4 hours each week.}
+     
+\item{2008-2017}
+    {}
+    {}
+    {Organized a birthday party every month for patients at the Austin State Hospital. 5-6 hours each month.}
+    
+\item{2016-2017}
+    {}
+    {}
+    {Held multiple free computer science camps for middle school students at Canyon Vista Middle School. Introduced them to basic computer science concepts and simple programming exercises.}
+\end{eventlist}
+
+\section{Software skills}
+
+\begin{factlist}
+
+\item{Advanced}
+     {C++, Java, Linux, QT, QML, Unity}
+
+\item{Intermediate}
+     {Python, \LaTeX{} Tensorflow, git, C\#, JavaScript}
+
+\end{factlist}
+
+\section{References}
+\begin{factlist}
+\item{[1] Dr. Ruozzi}
+     {nicholas.ruozzi@utd.edu}
+     
+\item{[2] Dr. McMahan}
+     {rymcmaha@utd.edu}
+
+\end{factlist}
+
+\end{document}
+
